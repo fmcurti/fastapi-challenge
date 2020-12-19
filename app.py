@@ -35,7 +35,7 @@ async def get_work_by_id(work_id: str):
 async def save_isbn(request: BookSaveRequest):
     book = {}
     try:
-        book = book_repository.book_by_isbn(isbn)
+        book = book_repository.book_by_isbn(request.isbn)
     except:
         raise HTTPException(status_code=400, detail="Invalid ISBN")
     save(request.client_id,book)
